@@ -23,6 +23,7 @@
         type="text"
         id="chat-input"
         autocomplete="off"
+        (keypress)="onEnterPress($event)"
         (change)="insertTheMessage($event)"
         #InputElement
       />
