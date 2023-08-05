@@ -18,6 +18,9 @@
     </div>
   </div>
   <div class="input-container">
+    <div class="loading" *ngIf="loading">
+      <app-loading-screen></app-loading-screen>
+    </div>
     <div class="input-item">
       <input
         type="text"

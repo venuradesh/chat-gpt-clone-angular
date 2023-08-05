@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatComponentComponent } from './Components/chat-component/chat-component.component';
+import { LoadingScreenComponent } from './Components/loading-screen/loading-screen.component';
 
 @NgModule({
-  declarations: [AppComponent, ChatComponentComponent],
+  declarations: [AppComponent, ChatComponentComponent, LoadingScreenComponent],
   imports: [BrowserModule, AppRoutingModule, CommonModule],
   providers: [],
   bootstrap: [AppComponent],

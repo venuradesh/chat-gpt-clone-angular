@@ -10,6 +10,7 @@ export class ChatComponentComponent implements OnInit {
   messages = [];
   firstMessage: string = '';
   chatInput: string = '';
+  loading: boolean = false;
 
   @ViewChild('InputElement') inputElement: ElementRef;
 
@@ -31,6 +32,8 @@ export class ChatComponentComponent implements OnInit {
             message: data.choices[0].message,
           },
         ];
+
+        if (data) this.loading = false;
       } catch (e) {
         console.error(e);
       }
@@ -54,6 +57,7 @@ export class ChatComponentComponent implements OnInit {
 
   getTheMessageFromUser = () => {
     if (this.chatInput) {
+      this.loading = true;
       this.messages = [
         ...this.messages,
         {

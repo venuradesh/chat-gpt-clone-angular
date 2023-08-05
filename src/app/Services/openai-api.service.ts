@@ -9,7 +9,7 @@ export class OpenaiApiService {
   previousMessages: Array<{ role: string; content: string }> = [];
 
   constructor() {
-    this.API_KEY = '';
+    this.API_KEY = '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';
     this.API_URL = 'https://api.openai.com/v1/chat/completions';
   }
 
