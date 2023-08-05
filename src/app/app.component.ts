@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ChatComponentComponent } from './Components/chat-component/chat-component.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'chat-gpt-clone';
+
+  @ViewChild('chatComponent', { static: true })
+  chatComponent: ChatComponentComponent;
+
+  makeChatHistory = (value: any) => {
+    console.log(value);
+  };
+
+  onNewChatClick = () => {
+    this.chatComponent.onNewchatClick();
+  };
 }

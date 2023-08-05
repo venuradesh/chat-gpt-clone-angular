@@ -11,6 +11,8 @@ export class ChatComponentComponent implements OnInit {
   firstMessage: string = '';
   chatInput: string = '';
   loading: boolean = false;
+  history: Array<string>[] = [];
+  previousChats = [];
 
   @ViewChild('InputElement') inputElement: ElementRef;
 
@@ -44,6 +46,10 @@ export class ChatComponentComponent implements OnInit {
 
   insertTheMessage = (event: any) => {
     this.chatInput = event.target.value;
+    if (this.messages.length === 0) {
+      this.firstMessage = event.target.value;
+      this.history = [...this.history, event.target.value];
+    }
   };
 
   onEnterPress = (event: KeyboardEvent) => {
@@ -72,5 +78,13 @@ export class ChatComponentComponent implements OnInit {
       this.getTheGPTChat();
       this.inputElement.nativeElement.value = '';
     }
+  };
+
+  onNewchatClick = () => {
+    this.previousChats = [...this.previousChats, this.messages];
+    this.messages = [];
+    this.firstMessage = '';
+    this.chatInput = '';
+    this.inputElement.nativeElement.value = '';
   };
 }
