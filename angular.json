@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "chat-gpt-clone"
+    }
+  },
+  "defaultProject": "chat-gpt-clone",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="chat-container">
+    <div class="chat" *ngIf="messages?.length > 0">
+      <div class="ind" *ngFor="let msg of messages">
+        <div class="user" *ngIf="msg.message.role === 'user'">
+          <img src="../../../assets/images/user.png" alt="user" />
+          <div class="content">{{ msg.message.content }}</div>
+        </div>
+        <div class="gpt" *ngIf="msg.message.role === 'assistant'">
+          <img src="../../../assets/images/openai.png" alt="openai" />
+          <div class="content">{{ msg.message.content }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="heading" *ngIf="messages?.length <= 0">
+      <div class="main">Chat GPT <span>clone</span></div>
+      <div class="sub">using Angular JS</div>
+    </div>
+  </div>
+  <div class="input-container">
+    <div class="input-item">
+      <input
+        type="text"
+        id="chat-input"
+        autocomplete="off"
+        (change)="insertTheMessage($event)"
+        #InputElement
+      />
+      <img
+        src="../../../assets/images/send.png"
+        alt="send"
+        (click)="getTheMessageFromUser()"
+      />
+    </div>
+    <div class="footer">
+      <span>ChatGPT Clone using Angular</span>
+      <span>&copy; Venura Warnaosooriya</span>
+      <span>03<sup>rd</sup> August 2023</span>
+      <span>OpenAI API</span>
+    </div>
+  </div>
+</div>

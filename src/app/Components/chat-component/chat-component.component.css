@@ -1,0 +1,103 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-container {
+  padding: 20px;
+  width: 100%;
+  height: 85%;
+}
+
+.chat-container .chat img {
+  width: 15px;
+}
+
+.chat-container .chat .ind .user {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row-reverse;
+  column-gap: 10px;
+}
+
+.chat-container .chat .ind .user .content {
+  background-color: var(--panel-color);
+  padding: 10px 10px;
+  border-radius: 8px;
+  border-bottom-right-radius: 0px;
+}
+
+.heading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.heading .main {
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--input-text);
+}
+
+.heading .sub {
+  color: var(--input-text);
+  letter-spacing: 10px;
+}
+
+.heading .main span {
+  font-size: 1rem;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+  padding-inline: 50px;
+  background-image: linear-gradient(to top, var(--panel-color), transparent);
+}
+
+.input-item {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.input-item input {
+  width: 100%;
+  height: 50px;
+  background-color: var(--input-color);
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 10px 0 var(--panel-color);
+  padding-inline: 20px;
+  font-size: 1rem;
+  color: var(--input-text);
+  outline: none;
+}
+
+.input-item img {
+  width: 20px;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}
+
+.footer {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  color: var(--input-text);
+  font-weight: 600;
+  column-gap: 20px;
+}
