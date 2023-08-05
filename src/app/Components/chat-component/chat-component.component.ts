@@ -22,7 +22,7 @@ export class ChatComponentComponent implements OnInit {
   getTheGPTChat = async () => {
     if (this.chatInput) {
       try {
-        const response = await this.openAIApiService.getChat(this.chatInput);
+        const response = await this.openAIApiService.getChat(this.messages);
         const data = await response.json();
         this.messages = [
           ...this.messages,
@@ -31,7 +31,6 @@ export class ChatComponentComponent implements OnInit {
             message: data.choices[0].message,
           },
         ];
-        console.log(data);
       } catch (e) {
         console.error(e);
       }
