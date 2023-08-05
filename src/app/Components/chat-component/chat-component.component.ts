@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { OpenaiApiService } from 'src/app/Services/openai-api.service';
 
 @Component({
@@ -10,6 +10,8 @@ export class ChatComponentComponent implements OnInit {
   messages = [];
   firstMessage: string = '';
   chatInput: string = '';
+
+  @ViewChild('InputElement') inputElement: ElementRef;
 
   constructor(private openAIApiService: OpenaiApiService) {}
 
@@ -38,8 +40,17 @@ export class ChatComponentComponent implements OnInit {
     }
   };
 
-  insertTheMessage = (event) => {
+  insertTheMessage = (event: any) => {
     this.chatInput = event.target.value;
+  };
+
+  onEnterPress = (event: KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      this.insertTheMessage({
+        target: { value: this.inputElement.nativeElement.value },
+      });
+      this.getTheMessageFromUser();
+    }
   };
 
   getTheMessageFromUser = () => {
@@ -56,6 +67,7 @@ export class ChatComponentComponent implements OnInit {
       ];
 
       this.getTheGPTChat();
+      this.inputElement.nativeElement.value = '';
     }
   };
 }

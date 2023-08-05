@@ -8,7 +8,7 @@ export class OpenaiApiService {
   API_URL: string;
 
   constructor() {
-    this.API_KEY = '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';
+    this.API_KEY = '';
     this.API_URL = 'https://api.openai.com/v1/chat/completions';
   }
 
