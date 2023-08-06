@@ -6,7 +6,11 @@
         New Chat
       </div>
       <div class="history">
-        <div class="item" *ngFor="let item of history">
+        <div
+          class="item"
+          *ngFor="let item of history; let i = index"
+          (click)="getTheChatHistory(item, i)"
+        >
           <img src="../assets/images/chat.png" alt="chat" />
           {{ item }}
         </div>
