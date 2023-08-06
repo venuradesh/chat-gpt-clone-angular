@@ -8,6 +8,7 @@ import { ChatComponentComponent } from './Components/chat-component/chat-compone
 })
 export class AppComponent {
   title = 'chat-gpt-clone';
+  history: Array<string> = [];
 
   @ViewChild('chatComponent', { static: true })
   chatComponent: ChatComponentComponent;
@@ -18,5 +19,9 @@ export class AppComponent {
 
   onNewChatClick = () => {
     this.chatComponent.onNewchatClick();
+  };
+
+  handleHistory = (event: string[]) => {
+    this.history = [...event];
   };
 }

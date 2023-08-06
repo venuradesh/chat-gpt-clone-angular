@@ -1,4 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { OpenaiApiService } from 'src/app/Services/openai-api.service';
 
 @Component({
@@ -11,7 +18,7 @@ export class ChatComponentComponent implements OnInit {
   firstMessage: string = '';
   chatInput: string = '';
   loading: boolean = false;
-  history: Array<string>[] = [];
+  history: Array<string> = [];
   previousChats = [];
   images = [];
   generateImages: boolean = false;
@@ -19,10 +26,18 @@ export class ChatComponentComponent implements OnInit {
 
   @ViewChild('InputElement') inputElement: ElementRef;
 
+  @Output() messagesHistory: EventEmitter<string[]> = new EventEmitter<
+    string[]
+  >();
+
   constructor(private openAIApiService: OpenaiApiService) {}
 
   ngOnInit(): void {
-    this.getTheGPTChat();
+    this.messagesHistory.emit(this.history);
+
+    if (this.previousChats.length > 0) {
+      this.getTheGPTChat();
+    }
   }
 
   getTheGPTChat = async () => {
@@ -69,8 +84,6 @@ export class ChatComponentComponent implements OnInit {
               role: 'assistant',
             },
           ];
-          console.log('Messages: ', this.messages);
-          console.log('Previous Messages: ', this.previousImages);
           if (images) {
             this.loading = false;
           }
@@ -88,6 +101,7 @@ export class ChatComponentComponent implements OnInit {
     if (this.messages.length === 0) {
       this.firstMessage = event.target.value;
       this.history = [...this.history, event.target.value];
+      this.messagesHistory.emit(this.history);
     }
   };
 
