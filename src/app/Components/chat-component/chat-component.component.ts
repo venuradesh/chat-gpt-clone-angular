@@ -161,7 +161,22 @@ export class ChatComponentComponent implements OnInit {
   //triggers when history item is clicked and
   //triggers by the parent component (app-root)
   chatHistoryItemClicked = (itemClicked: string, index: number) => {
+    /*
+      First add the current chat to the previous chats
+      Then add the selected history item chat to the messages
+      remove the selected chat from previous chats
+      then Set the First name as selected hisotry item
+      then remove the selected hisotry item from history chat
+      then add the firstname to the history chat to get the index
+    */
+
     this.previousChats = [...this.previousChats, this.messages];
     this.messages = [...this.previousChats[index]];
+    this.previousChats = this.previousChats.filter((item, i) => i !== index);
+    this.firstMessage = itemClicked;
+    this.history = this.history.filter((item) => item !== itemClicked);
+    this.history = [...this.history, this.firstMessage];
+
+    this.messagesHistory.emit(this.history);
   };
 }
