@@ -24,4 +24,8 @@ export class AppComponent {
   handleHistory = (event: string[]) => {
     this.history = [...event];
   };
+
+  getTheChatHistory = (value: string, index: number) => {
+    this.chatComponent.chatHistoryItemClicked(value, index);
+  };
 }

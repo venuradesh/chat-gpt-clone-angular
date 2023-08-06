@@ -34,7 +34,6 @@ export class ChatComponentComponent implements OnInit {
 
   ngOnInit(): void {
     this.messagesHistory.emit(this.history);
-
     if (this.previousChats.length > 0) {
       this.getTheGPTChat();
     }
@@ -157,5 +156,12 @@ export class ChatComponentComponent implements OnInit {
   genImages = () => {
     this.generateImages = !this.generateImages;
     this.onNewchatClick();
+  };
+
+  //triggers when history item is clicked and
+  //triggers by the parent component (app-root)
+  chatHistoryItemClicked = (itemClicked: string, index: number) => {
+    this.previousChats = [...this.previousChats, this.messages];
+    this.messages = [...this.previousChats[index]];
   };
 }
