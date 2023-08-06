@@ -1,0 +1,36 @@
+.container {
+  width: 60px;
+  height: 30px;
+  background-color: var(--panel-color);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 12px;
+}
+
+.container .dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--chat-color);
+  border-radius: 50%;
+  animation: dotAnimation 0.6s ease-in-out alternate infinite;
+}
+
+.container .dot2 {
+  animation-delay: 0.3s;
+}
+
+.container .dot3 {
+  animation-delay: 0.6s;
+}
+
+@keyframes dotAnimation {
+  0% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
