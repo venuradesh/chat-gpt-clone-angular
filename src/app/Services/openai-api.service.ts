@@ -6,11 +6,30 @@ import { Injectable } from '@angular/core';
 export class OpenaiApiService {
   API_KEY: string;
   API_URL: string;
+  API_KEY_IMAGES: string;
+  API_URL_IMAGES: string;
   previousMessages: Array<{ role: string; content: string }> = [];
 
   constructor() {
     this.API_KEY = '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';
+    this.API_KEY_IMAGES = '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';
+    this.API_URL_IMAGES = 'https://api.openai.com/v1/images/generations';
     this.API_URL = 'https://api.openai.com/v1/chat/completions';
+  }
+
+  async getImages(prompt: string) {
+    return await fetch(this.API_URL_IMAGES, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${this.API_KEY_IMAGES}`,
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        prompt: prompt,
+        n: 4,
+        size: '256x256',
+      }),
+    });
   }
 
   async getChat(
