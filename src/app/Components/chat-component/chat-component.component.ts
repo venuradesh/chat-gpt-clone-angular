@@ -49,6 +49,7 @@ export class ChatComponentComponent implements OnInit {
           this.messages = [
             ...this.messages,
             {
+              type: 'text',
               title: this.firstMessage,
               message: data.choices[0].message,
             },
@@ -121,6 +122,7 @@ export class ChatComponentComponent implements OnInit {
         this.messages = [
           ...this.messages,
           {
+            type: 'text',
             title: this.firstMessage,
             message: {
               role: 'user',
@@ -175,6 +177,11 @@ export class ChatComponentComponent implements OnInit {
     this.previousChats.map((chat, index) => {
       chat.map((msg: any) => {
         if (msg.title === itemClicked) {
+          if (msg.type === 'image') {
+            this.generateImages = true;
+          } else {
+            this.generateImages = false;
+          }
           this.messages = [...chat];
           this.firstMessage = itemClicked;
           flag = true;
@@ -185,7 +192,7 @@ export class ChatComponentComponent implements OnInit {
     });
 
     //removing the selected chat from the previous chats
-    // becuase at the begining i'm adding the current chat to the previous chat
+    //becuase at the begining i'm adding the current chat to the previous chat
     if (flag) {
       this.previousChats = this.previousChats.filter(
         (item, i) => i !== removeItem
