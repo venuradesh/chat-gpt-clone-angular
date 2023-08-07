@@ -93,7 +93,7 @@
 
 .heading .sub {
   color: var(--input-text);
-  letter-spacing: 10px;
+  letter-spacing: 5px;
 }
 
 .heading .main span {
@@ -172,6 +172,19 @@
 
 .generateImages img {
   width: 20px;
+}
+
+.input-container .error {
+  position: absolute;
+  top: -50px;
+  padding: 10px 20px;
+  background-color: var(--panel-color);
+  border-radius: 12px;
+}
+
+.input-container .error .error-content {
+  font-size: 0.8rem;
+  color: var(--input-text);
 }
 
 .footer {

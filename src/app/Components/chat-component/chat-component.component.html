@@ -30,7 +30,7 @@
     </div>
     <div class="heading" *ngIf="messages?.length <= 0">
       <div class="main">Chat GPT <span>clone</span></div>
-      <div class="sub">using Angular JS</div>
+      <div class="sub">using Angular Framework</div>
     </div>
   </div>
   <div class="input-container">
@@ -58,6 +58,9 @@
       (click)="genImages()"
     >
       <img src="../../../assets/images/image.png" alt="generate images" />
+    </div>
+    <div class="error" *ngIf="error">
+      <div class="error-content">Connection issue occured! Try Again</div>
     </div>
     <div class="footer">
       <span>ChatGPT Clone using Angular</span>
