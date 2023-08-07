@@ -23,6 +23,7 @@ export class ChatComponentComponent implements OnInit {
   images = [];
   generateImages: boolean = false;
   previousImages = [];
+  error: boolean = false;
 
   @ViewChild('InputElement') inputElement: ElementRef;
 
@@ -42,6 +43,7 @@ export class ChatComponentComponent implements OnInit {
   getTheGPTChat = async () => {
     if (this.chatInput) {
       try {
+        this.error = false;
         if (!this.generateImages) {
           //for text input without images
           const response = await this.openAIApiService.getChat(this.messages);
@@ -89,6 +91,8 @@ export class ChatComponentComponent implements OnInit {
           }
         }
       } catch (e) {
+        this.loading = false;
+        this.error = true;
         console.error(e);
       }
     } else {
