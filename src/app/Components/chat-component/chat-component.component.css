@@ -54,13 +54,13 @@
 }
 
 .gpt .content.content-with-images {
-  width: 250px;
-  height: 250px;
+  width: 230px;
+  /* height: 250px; */
   display: flex;
   flex-wrap: wrap;
   row-gap: 5px;
   column-gap: 5px;
-  padding: 5px;
+  padding: 10px;
   justify-content: space-around;
 }
 

@@ -34,6 +34,7 @@ export class OpenaiApiService {
 
   async getChat(
     messages: Array<{
+      type: string;
       title: string;
       message: { role: string; content: string };
     }>
@@ -42,7 +43,11 @@ export class OpenaiApiService {
     this.previousMessages = [];
     //getting the previous chat and adding it to previous images
     messages.map(
-      (msg: { message: { role: string; content: string }; title: string }) => {
+      (msg: {
+        message: { role: string; content: string };
+        title: string;
+        type: string;
+      }) => {
         this.previousMessages = [
           ...this.previousMessages,
           { role: msg.message.role, content: msg.message.content },

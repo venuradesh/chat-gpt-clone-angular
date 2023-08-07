@@ -162,21 +162,34 @@ export class ChatComponentComponent implements OnInit {
   //triggers by the parent component (app-root)
   chatHistoryItemClicked = (itemClicked: string, index: number) => {
     /*
-      First add the current chat to the previous chats
-      Then add the selected history item chat to the messages
-      remove the selected chat from previous chats
-      then Set the First name as selected hisotry item
-      then remove the selected hisotry item from history chat
-      then add the firstname to the history chat to get the index
+      First Enter the current messages into the previous messages 
+      otherwise the current messages will be lost.
+      Then find the item that match the title with the itemClicked and 
+      add that item to the messages and remove that item from previous chat.
+      then set the firstMessage as the itemClicked
     */
-
     this.previousChats = [...this.previousChats, this.messages];
-    this.messages = [...this.previousChats[index]];
-    this.previousChats = this.previousChats.filter((item, i) => i !== index);
-    this.firstMessage = itemClicked;
-    this.history = this.history.filter((item) => item !== itemClicked);
-    this.history = [...this.history, this.firstMessage];
+    let flag: boolean = false;
+    let removeItem: number;
 
-    this.messagesHistory.emit(this.history);
+    this.previousChats.map((chat, index) => {
+      chat.map((msg: any) => {
+        if (msg.title === itemClicked) {
+          this.messages = [...chat];
+          this.firstMessage = itemClicked;
+          flag = true;
+          //used for removing the chat from the previous chat
+          removeItem = index;
+        }
+      });
+    });
+
+    //removing the selected chat from the previous chats
+    // becuase at the begining i'm adding the current chat to the previous chat
+    if (flag) {
+      this.previousChats = this.previousChats.filter(
+        (item, i) => i !== removeItem
+      );
+    }
   };
 }
